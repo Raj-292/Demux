@@ -21,6 +21,7 @@ public:
         // a+b -> concatenate the string
         for (string s : str) res += s;
 
+        // removing all the leading zeroes
         while (res[0] == '0' && res.size() > 1) {
             // erase works on vector and strings both - erase from a range
             // v.erase(start position,end position )
