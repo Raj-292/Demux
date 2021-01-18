@@ -36,7 +36,7 @@ public:
 		vector<int> freq(256, 0);
 		for (char c : s) freq[c]++;
 		// Lambda function
-		// [Scope] [variables] [body]
+		// [Scope] (variables) {body}
 		sort(s.begin(), s.end(), [&freq](char a, char b) { //Instead of [&freq], we may use [=] to pass everything outside
 			if (freq[a] == freq[b]) return a < b;
 			return freq[a] > freq[b];
