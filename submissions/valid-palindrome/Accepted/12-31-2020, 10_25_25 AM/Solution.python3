@@ -1,0 +1,11 @@
+// https://leetcode.com/problems/valid-palindrome
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        f = " ".join(e for e in s if e.isalnum())
+        f=f.upper()
+        l = len(f)
+        for i in range(len(f)):
+            if f[i]!=f[l-i-1]:
+                return False
+        return True

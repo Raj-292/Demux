@@ -7,42 +7,46 @@ using namespace std;
 int main() {
 
 #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 #endif
 
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 
-    char input[] = {'a', 'a', 'a', 'b', 'b', 'c', 'c', 'd', 's', 'a'};
+	//check whether chars can be appended to strings
 
-    int n = sizeof(input) / sizeof(input[0]);
+	vector<string> v1 = {"abc", "def", "ghi"};
 
+	for (auto x : v1) {
+		cout << x << " ";
+	}
 
-    vector<char> new_array;
+	// cout << endl;
 
-    char temp = input[0];
-    new_array.push_back(temp);
+	// char c1 = '1';
 
-    for (int i = 1; i < n; i++) {
-        int cnt = 1;
-        if (input[i] == temp) {
-            cnt++;
-        } else {
-            temp = input[i];
-            if (cnt > 1) {
-                new_array.push_back(cnt - 48);
-            }
+	// // v1[1] = c1 + v1[1];
 
-            char z[new_array.size()];
-
-            for (int i = 0; i < new_array.size(); i++) {
-                z[i] = new_array[i];
-            }
+	// string str = "xyz";
 
 
-        }
+	// // for(char& c : str) {
 
-    }
+	// // }
+
+	// for (auto x : v1) {
+	// 	cout << x << " ";
+	// }
+
+	char c = '$';
+
+	for (string& s : v1) {
+		s = c + s;
+	}
+
+	for (auto x : v1) {
+		cout << x << " ";
+	}
 
 }

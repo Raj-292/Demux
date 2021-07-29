@@ -1,0 +1,37 @@
+// https://leetcode.com/problems/clone-graph
+
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+"""
+
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        if not node:
+            return node
+        # Clone a graph 
+        q1 = deque()
+        q2 = deque()
+        root = Node(node.val)
+        q1.append(root)  # cloned
+        q2.append(node)  # main
+        visited = {}
+        visited[node.val] = root
+        while len(q1):
+            middle2 = q2.popleft()
+            middle1 = q1.popleft()
+            print(middle1.val)
+            print(middle2.val)
+            for nbr in middle2.neighbors:
+                if not nbr.val in visited:
+                    child = Node(nbr.val)
+                    visited[nbr.val] = child
+                    q1.append(child)
+                    q2.append(nbr)
+                middle1.neighbors.append(visited[nbr.val])
+                # child.neighbors.append(middle1)
+        return root
+        

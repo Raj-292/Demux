@@ -1,0 +1,53 @@
+// https://leetcode.com/problems/fraction-to-recurring-decimal
+
+class Solution:
+    def fractionToDecimal(self, numerator: int, denominator: int) -> str:
+        
+        def populateAfterDecimal(num,den,res):
+            # Key: Remainder
+            # Value: Index in res where the remainder occured for the first time
+            m={}
+            ans = ""
+            while(num):
+                # If num is not found in the map
+                if num not in m: 
+                    m[num] = len(res)-1
+                    q = num//den
+                    r = num%den
+                    res += str(q)
+                    num = r*10
+                else: 
+                    ans = res[0:m[num]+1] + "(" + res[m[num]+1:] + ")"
+                    res = ans
+                    return res 
+            return res
+        
+        if numerator == 0:
+            return "0"
+        
+        res = ""
+        
+        # Negative result
+        if (numerator < 0 and denominator > 0) or (numerator > 0 and denominator < 0):
+            res += "-"
+        
+        num = abs(numerator)
+        den = abs(denominator)
+        
+        #Before the decimal
+        q = num//den
+        rem = num%den
+        
+        res += str(q)
+        
+        # Decimal
+        if(rem == 0):
+            return res
+        
+        res += "."
+        
+        # After the decimal
+        res=populateAfterDecimal(rem*10, den, res)
+        
+        return res
+        
